@@ -6,9 +6,9 @@
 
 **Status:** ready-for-agent
 
-- [ ] `buildSite` passa a montar também o `dashboard` do `SiteModel` (todos os Wins normalizados)
-- [ ] Renderização HTML da visão completa, gerada só localmente / como artifact — **gitignored, nunca no diretório publicado**
-- [ ] Busca por texto nos Wins
-- [ ] Filtros por Job, Tag e Período
-- [ ] Cada Win mostra em quais `brag:*` já está incluído
-- [ ] Comando local único gera e abre/aponta o dashboard
+- [x] `buildSite` passa a montar também o `dashboard` do `SiteModel` (todos os Wins normalizados)
+- [x] Renderização HTML da visão completa, gerada só localmente / como artifact — **gitignored, nunca no diretório publicado**
+- [x] Busca por texto nos Wins
+- [x] Filtros por Job, Tag e Período
+- [x] Cada Win mostra em quais `brag:*` já está incluído
+- [x] Comando local único gera e abre/aponta o dashboard

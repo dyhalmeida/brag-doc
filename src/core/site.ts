@@ -34,12 +34,54 @@ export interface DocModel {
   wins: DocModelWin[];
 }
 
+export interface DashboardWin {
+  title: string;
+  date: string;
+  job: string | undefined;
+  tags: string[];
+  details: string | undefined;
+  impactMetric: string | undefined;
+  links: string[];
+  issueNumber: number;
+  issueUrl: string;
+  brags: string[];
+  period: string;
+}
+
+export interface DashboardModel {
+  wins: DashboardWin[];
+}
+
 export interface SiteModel {
+  dashboard: DashboardModel;
   docs: DocModel[];
 }
 
 export function buildSite(wins: Win[], docConfigs: DocConfig[]): SiteModel {
-  return { docs: docConfigs.map((docConfig) => buildDoc(wins, docConfig)) };
+  return {
+    dashboard: buildDashboard(wins),
+    docs: docConfigs.map((docConfig) => buildDoc(wins, docConfig)),
+  };
+}
+
+function buildDashboard(wins: Win[]): DashboardModel {
+  return { wins: orderByDate(wins, "newest").map(toDashboardWin) };
+}
+
+function toDashboardWin(win: Win): DashboardWin {
+  return {
+    title: win.title,
+    date: win.date,
+    job: win.job,
+    tags: win.tags,
+    details: win.details,
+    impactMetric: win.impactMetric,
+    links: win.links,
+    issueNumber: win.issueNumber,
+    issueUrl: win.issueUrl,
+    brags: win.brags,
+    period: win.period.milestone,
+  };
 }
 
 function buildDoc(wins: Win[], docConfig: DocConfig): DocModel {

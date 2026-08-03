@@ -81,3 +81,45 @@ describe("buildSite", () => {
     expect(site.docs[0]?.wins).toEqual([]);
   });
 });
+
+describe("buildSite dashboard", () => {
+  it("includes every win, regardless of brag:* labels", () => {
+    const site = buildSite(wins, []);
+
+    expect(site.dashboard.wins.map((win) => win.issueNumber)).toEqual(
+      expect.arrayContaining([42, 11, 7]),
+    );
+    expect(site.dashboard.wins).toHaveLength(3);
+  });
+
+  it("orders wins newest-first", () => {
+    const site = buildSite(wins, []);
+
+    expect(site.dashboard.wins.map((win) => win.date)).toEqual(["2026-05-20", "2026-03-15", "2026-02-10"]);
+  });
+
+  it("shows every win's brag:* slugs, unaffected by any doc's show toggles", () => {
+    const site = buildSite(wins, [review2026DocAllHidden]);
+
+    const led = site.dashboard.wins.find((win) => win.issueNumber === 11);
+    expect(led?.brags).toEqual(["review-2026", "entrevista-x"]);
+    expect(led?.date).toBe("2026-05-20");
+    expect(led?.job).toBe("acme");
+
+    const presented = site.dashboard.wins.find((win) => win.issueNumber === 7);
+    expect(presented?.brags).toEqual([]);
+  });
+
+  it("carries the derived period milestone", () => {
+    const site = buildSite(wins, []);
+
+    const led = site.dashboard.wins.find((win) => win.issueNumber === 11);
+    expect(led?.period).toBe("2026-Q2");
+  });
+
+  it("produces an empty dashboard when there are no wins", () => {
+    const site = buildSite([], []);
+
+    expect(site.dashboard.wins).toEqual([]);
+  });
+});
