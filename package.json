@@ -8,7 +8,8 @@
     "build": "tsc -p tsconfig.json",
     "wins": "npm run build && node dist/edges/list-wins.js",
     "generate": "npm run build && node dist/edges/publish-site.js",
-    "dashboard": "npm run build && node dist/edges/publish-dashboard.js"
+    "dashboard": "npm run build && node dist/edges/publish-dashboard.js",
+    "reports": "npm run build && node dist/edges/publish-reports.js"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",

@@ -123,3 +123,14 @@ describe("buildSite dashboard", () => {
     expect(site.dashboard.wins).toEqual([]);
   });
 });
+
+describe("buildSite reports", () => {
+  it("aggregates every win, regardless of brag:* labels", () => {
+    const site = buildSite(wins, [review2026Doc]);
+
+    expect(site.reports.byPeriod).toEqual([
+      { key: "2026-Q1", count: 2 },
+      { key: "2026-Q2", count: 1 },
+    ]);
+  });
+});

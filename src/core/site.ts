@@ -1,3 +1,4 @@
+import { buildReports, type ReportsModel } from "./reports.js";
 import type { Win } from "./win.js";
 
 export interface DocConfigShow {
@@ -55,12 +56,14 @@ export interface DashboardModel {
 export interface SiteModel {
   dashboard: DashboardModel;
   docs: DocModel[];
+  reports: ReportsModel;
 }
 
 export function buildSite(wins: Win[], docConfigs: DocConfig[]): SiteModel {
   return {
     dashboard: buildDashboard(wins),
     docs: docConfigs.map((docConfig) => buildDoc(wins, docConfig)),
+    reports: buildReports(wins),
   };
 }
 

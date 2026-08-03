@@ -6,8 +6,8 @@
 
 **Status:** ready-for-agent
 
-- [ ] `buildSite` passa a montar também os `reports` do `SiteModel` (agregados)
-- [ ] Agregados: contagem de Wins por Período, por Tag e por Job
-- [ ] Filtros por Período, Job e Tag aplicáveis à visão de Reports
-- [ ] Testes dos agregados com fixtures (contagens corretas, filtros combinados)
-- [ ] Renderização local (não vai para o Pages)
+- [x] `buildSite` passa a montar também os `reports` do `SiteModel` (agregados)
+- [x] Agregados: contagem de Wins por Período, por Tag e por Job
+- [x] Filtros por Período, Job e Tag aplicáveis à visão de Reports
+- [x] Testes dos agregados com fixtures (contagens corretas, filtros combinados)
+- [x] Renderização local (não vai para o Pages)

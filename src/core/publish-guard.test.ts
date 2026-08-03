@@ -27,6 +27,7 @@ describe("findLeaks", () => {
   it("flags a win included in a doc it does not carry the brag:<slug> label for", () => {
     const rogueSite: SiteModel = {
       dashboard: { wins: [] },
+      reports: { wins: [], byPeriod: [], byTag: [], byJob: [] },
       docs: [
         {
           slug: review2026Doc.slug,
