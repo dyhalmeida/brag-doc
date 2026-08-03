@@ -1,0 +1,60 @@
+name: Win
+description: Registrar uma conquista profissional
+title: "[Win]: "
+labels: ["type:win"]
+body:
+  - type: input
+    id: titulo
+    attributes:
+      label: Título
+      description: Uma descrição curta do que você realizou.
+      placeholder: "Reduzi o tempo de deploy em 70%"
+    validations:
+      required: true
+
+  - type: input
+    id: data
+    attributes:
+      label: Data
+      description: Quando isso aconteceu? Formato AAAA-MM-DD (fonte única de verdade do Período).
+      placeholder: "2026-03-15"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: job
+    attributes:
+      label: Job
+      description: >
+        Apenas para referência visual ao preencher — a classificação real do
+        Job usada pelo sistema vem do label `job:<slug>` (adicione-o
+        manualmente na Issue, como o label de Tag).
+      options:
+        - Acme Corp
+        - Outro
+    validations:
+      required: false
+
+  - type: textarea
+    id: detalhes
+    attributes:
+      label: Detalhes
+      description: Contexto e narrativa da conquista (markdown).
+    validations:
+      required: false
+
+  - type: input
+    id: impact-metric
+    attributes:
+      label: Impact Metric
+      description: 'Métrica + valor, ex.: "Redução de latência: 40%".'
+    validations:
+      required: false
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: Um link por linha (PR, Figma, doc, gravação).
+    validations:
+      required: false
