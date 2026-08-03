@@ -1,0 +1,11 @@
+title: "Brag Doc de Exemplo"
+intro: >
+  Doc de exemplo criado para testar o pipeline completo do sistema:
+  captura via Issue, milestone automática, curadoria por label e
+  publicação estática no GitHub Pages.
+order: newest
+show:
+  metrics: true
+  dates: true
+  company: true
+  links: true
