@@ -1,0 +1,33 @@
+name: Lembrete semanal de Wins
+
+on:
+  schedule:
+    # Toda sexta-feira às 15h UTC. Ajuste dia/frequência editando este cron.
+    - cron: "0 15 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Abrir Issue de lembrete
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BODY=$(cat <<'EOF'
+          ## O que você conquistou esta semana?
+
+          - [ ] Revisei o que fiz nos últimos 7 dias
+          - [ ] Abri uma Issue de Win (menu Issues > New issue > Win) para cada conquista
+
+          Este lembrete não tem o label type:win — ele é ignorado pelo parser e pela geração do brag doc.
+          EOF
+          )
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "Lembrete: registre seus Wins da semana" \
+            --body "$BODY"
