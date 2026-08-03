@@ -1,0 +1,5 @@
+node_modules/
+dist/
+
+# Visão completa local dos Wins — nunca versionada nem publicada (ADR-0001, ADR-0004)
+.local/
