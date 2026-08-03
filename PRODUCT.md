@@ -41,7 +41,7 @@ Cada Brag Doc tem sua própria configuração: título, texto de introdução, o
 
 Cada Brag Doc curado é publicado automaticamente como uma página web (via GitHub Pages) sempre que você atualiza a curadoria. Essa URL é o "link compartilhável" que você manda para um gestor ou recrutador — sem precisar montar nada manualmente.
 
-**Importante sobre privacidade:** só o que você marcar explicitamente para curadoria é publicado. A coleção completa de Wins nunca vai para uma página pública — ela só pode ser vista localmente, no seu computador.
+**Nota sobre privacidade (variante de repositório público):** nesta configuração, o repositório é **público** — decisão registrada em [`docs/adr/0005-public-repo-for-free-plan-pages.md`](docs/adr/0005-public-repo-for-free-plan-pages.md) para viabilizar o GitHub Pages no plano Free, que não habilita Pages em repositórios privados. Isso muda a garantia original do sistema: **toda Issue de Win é pública**, não só o recorte curado — qualquer pessoa pode navegar diretamente pelas Issues no GitHub. A curadoria por rótulo continua controlando o que vira uma página polida e compartilhável, mas deixou de ser um controle de privacidade. Evite registrar informação confidencial (nomes de clientes, dados sensíveis da empresa) nos campos de um Win.
 
 ### 5. Revisão local de tudo que você já fez
 
@@ -61,7 +61,7 @@ Uma vez por semana, o sistema abre automaticamente uma Issue de lembrete, para c
 
 ## Por que isso é diferente de um SaaS
 
-- **Seus dados, seu controle.** Tudo vive em um repositório Git privado, exportável e versionado — não em um banco de dados de terceiros.
+- **Seus dados, seu controle.** Tudo vive em um repositório Git seu, exportável e versionado — não em um banco de dados de terceiros. (Nesta variante o repositório é público por restrição do plano Free — veja a nota de privacidade acima.)
 - **Sem assinatura.** O sistema roda sobre recursos gratuitos do GitHub (Issues, Milestones, Labels, Actions, Pages).
 - **Sem tela de captura para manter.** Você usa a própria interface do GitHub (web ou mobile) para registrar Wins — nada de app ou formulário próprio para aprender.
 - **Somente leitura por design.** Toda visualização gerada (dashboard, reports, Brag Docs publicados) é read-only. Qualquer edição acontece na própria Issue, na UI nativa do GitHub — isso simplifica o sistema e evita duas fontes de verdade.

@@ -21,7 +21,7 @@ O parser reconhece uma Issue como Win pelo label `type:win` (aplicado automatica
 
 - **Node.js 25+** (usado pelo `tsconfig.json`/CI).
 - **GitHub CLI (`gh`)** instalado e autenticado localmente (`gh auth login`) — os comandos locais (`npm run wins`, `generate`, `dashboard`, `reports`) chamam `gh` para ler as Issues do repositório atual. Nas Actions, a autorização vem de `secrets.GITHUB_TOKEN`, já configurado nos workflows.
-- **Repositório privado.** A arquitetura assume isso: os Wins crus nunca devem ser públicos. Só o recorte curado (`brag:*`) vai para o Pages.
+- **Repositório público.** No plano GitHub Free, Pages não funciona em repositório privado por nenhum método (`build_type: workflow` nem branch `gh-pages`) — confirmado via API. Isso é uma mudança deliberada em relação ao pressuposto original de "repo privado" do ADR-0001; veja [`docs/adr/0005-public-repo-for-free-plan-pages.md`](docs/adr/0005-public-repo-for-free-plan-pages.md) para o trade-off completo: **toda Issue de Win fica pública**, não só o recorte curado. Não registre informação confidencial nos campos de um Win.
 - **GitHub Pages habilitado** no repositório, com a fonte configurada para "GitHub Actions" (Settings → Pages → Build and deployment → Source: GitHub Actions), para que o workflow `pages.yml` possa publicar.
 
 Instalação de dependências:
