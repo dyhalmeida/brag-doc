@@ -84,4 +84,50 @@ describe("renderDocHtml", () => {
     expect(html).not.toContain("<script>");
     expect(html).toContain("Texto normal.");
   });
+
+  describe("print styling", () => {
+    it("defines @media print rules for page margins and typography", () => {
+      const doc = buildSite([reducedDeployTime], [review2026Doc]).docs[0]!;
+
+      const html = renderDocHtml(doc);
+
+      expect(html).toContain("@media print");
+      expect(html).toContain("@page");
+    });
+
+    it("hides the issue backlink when printing, since it's not part of the story", () => {
+      const doc = buildSite([reducedDeployTime], [review2026Doc]).docs[0]!;
+
+      const html = renderDocHtml(doc);
+      const printBlock = extractPrintBlock(html);
+
+      expect(printBlock).toContain(".issue-link");
+      expect(printBlock).toMatch(/\.issue-link\s*\{[^}]*display:\s*none/);
+    });
+
+    it("keeps each win from being split across a page break", () => {
+      const doc = buildSite([reducedDeployTime], [review2026Doc]).docs[0]!;
+
+      const html = renderDocHtml(doc);
+      const printBlock = extractPrintBlock(html);
+
+      expect(printBlock).toMatch(/\.win\s*\{[^}]*page-break-inside:\s*avoid/);
+    });
+
+    it("keeps links legible and printed as visible text rather than hidden", () => {
+      const doc = buildSite([reducedDeployTime], [review2026Doc]).docs[0]!;
+
+      const html = renderDocHtml(doc);
+      const printBlock = extractPrintBlock(html);
+
+      expect(printBlock).not.toMatch(/\.links\s*\{[^}]*display:\s*none/);
+      expect(printBlock).not.toMatch(/\ba\s*\{[^}]*display:\s*none/);
+    });
+  });
 });
+
+function extractPrintBlock(html: string): string {
+  const match = html.match(/@media print\s*\{([\s\S]*?)\n\}\n/);
+  if (!match) throw new Error("expected an @media print block in the rendered HTML");
+  return match[1]!;
+}

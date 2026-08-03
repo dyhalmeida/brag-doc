@@ -54,4 +54,18 @@ body { font-family: system-ui, sans-serif; max-width: 42rem; margin: 2rem auto; 
 .details p:first-child { margin-top: 0; }
 .tags { display: flex; gap: 0.5rem; padding: 0; list-style: none; }
 .tags li { background: #eee; border-radius: 999px; padding: 0.1rem 0.6rem; font-size: 0.8rem; }
+
+@page {
+  margin: 2cm;
+}
+
+@media print {
+  body { max-width: none; margin: 0; padding: 0; font-size: 11pt; color: #000; }
+  .intro { color: #222; }
+  .win { border-top-color: #999; page-break-inside: avoid; }
+  h1, h2 { page-break-after: avoid; }
+  a { color: #000; text-decoration: underline; overflow-wrap: break-word; }
+  .tags li { background: #eee; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .issue-link { display: none; }
+}
 `;

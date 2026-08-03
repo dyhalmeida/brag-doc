@@ -6,7 +6,7 @@
 
 **Status:** ready-for-agent
 
-- [ ] Regras `@media print` no HTML do doc curado: tipografia, margens, quebras de página sensatas
-- [ ] Elementos de navegação/UI escondidos na impressão
-- [ ] Links continuam legíveis/utilizáveis no PDF
-- [ ] Verificação visual: Ctrl+P → salvar como PDF gera um documento apresentável de ponta a ponta
+- [x] Regras `@media print` no HTML do doc curado: tipografia, margens, quebras de página sensatas
+- [x] Elementos de navegação/UI escondidos na impressão
+- [x] Links continuam legíveis/utilizáveis no PDF
+- [x] Verificação visual: Ctrl+P → salvar como PDF gera um documento apresentável de ponta a ponta
