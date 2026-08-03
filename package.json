@@ -7,11 +7,15 @@
     "test": "vitest run",
     "build": "tsc -p tsconfig.json",
     "wins": "npm run build && node dist/edges/list-wins.js",
-    "generate": "echo \"generate: not implemented yet\" && exit 1"
+    "generate": "npm run build && node dist/edges/publish-site.js"
   },
   "devDependencies": {
     "@types/node": "^25.9.0",
     "typescript": "^7.0.2",
     "vitest": "^4.1.0"
+  },
+  "dependencies": {
+    "marked": "^18.0.7",
+    "yaml": "^2.9.0"
   }
 }

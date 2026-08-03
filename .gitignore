@@ -1,6 +1,9 @@
 node_modules/
 dist/
 
+# HTML publicado pelo `npm run generate` (artifact do build, nunca commitado)
+public/
+
 # Visão completa local dos Wins (spec: nunca versionada nem publicada) —
 # path definido aqui como convenção do scaffold; ticket 06 gera o conteúdo.
 .local/
