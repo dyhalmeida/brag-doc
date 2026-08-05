@@ -30,8 +30,7 @@ body:
         Job usada pelo sistema vem do label `job:<slug>` (adicione-o
         manualmente na Issue, como o label de Tag).
       options:
-        - Acme Corp
-        - Outro
+        - Juntos Somos Mais
     validations:
       required: false
 
